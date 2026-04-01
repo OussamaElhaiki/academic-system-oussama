@@ -5,6 +5,6 @@ export const createNotificationSlice: StateCreator<INotificationSlice> = (set) =
   messages: [],
   setMessage: (message) =>
     set((state) => ({
-      messages: [...state.messages, message],
-    })),
+      messages: [...state.messages, message]
+    }))
 })

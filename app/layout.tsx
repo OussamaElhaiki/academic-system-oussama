@@ -1,23 +1,29 @@
+import type { Metadata } from "next"
 import "./globals.css"
-import { StoreProvider } from "./components/providers/store-provider"
+import { Header } from "@/components/header"
+import { Footer } from "@/components/footer"
 import { ReactNode } from "react"
-import { Header } from "./components/header"
-import { Footer } from "./components/footer"
+import { StoreProvider } from "@/components/providers/store-provider"
 
-export default function RootLayout({
-  children,
-}: {
+export const metadata: Metadata = {
+  title: "Academic Achievements Tracker",
+  description: "Track and showcase your academic achievements with ease.",
+}
+
+export default async function RootLayout({
+  children
+}: Readonly<{
   children: ReactNode
-}) {
+}>) {
   return (
-<html lang="en">
-  <body className="container mx-auto">
-    <StoreProvider>
-      <Header />
-      {children}
-      <Footer />
-    </StoreProvider>
-  </body>
-</html>
+    <html lang="en">
+      <StoreProvider>
+        <body className="container mx-auto max-w-7xl">
+          <Header />
+          {children}
+          <Footer />
+        </body>
+      </StoreProvider>
+    </html>
   )
 }
